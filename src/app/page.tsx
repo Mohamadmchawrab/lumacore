@@ -159,7 +159,7 @@ export default function Home() {
       </main>
 
       {/* WhatsApp Chat Button */}
-      <a
+      {/* <a
         href="https://wa.me/96171480345"
         target="_blank"
         rel="noopener noreferrer"
@@ -173,7 +173,7 @@ export default function Home() {
           height={52}
           className="object-contain"
         />
-      </a>
+      </a> */}
     </div>
   );
 }

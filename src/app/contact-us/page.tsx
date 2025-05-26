@@ -106,7 +106,7 @@ export default function Contact() {
         </div>
       </main>
        {/* WhatsApp Chat Button */}
-            <a
+            {/* <a
               href="https://wa.me/96171480345"
               target="_blank"
               rel="noopener noreferrer"
@@ -120,7 +120,7 @@ export default function Contact() {
                 height={52}
                 className="object-contain"
               />
-            </a>
+            </a> */}
     </div>
   );
 }
