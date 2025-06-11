@@ -12,7 +12,7 @@ export default function Home() {
 
       <main>
         {/* Hero Section */}
-        <section className="pt-32 pb-20 px-4 bg-gradient-to-b from-blue-50 to-white">
+        <section className="pt-32 pb-20 px-4 bg-gradient-to-b from-black to-blue-950">
           <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -20,28 +20,21 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="text-left"
             >
-              <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+              <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-pink-500 to-blue-400 bg-clip-text text-transparent">
                 Transform Your Digital Future
               </h1>
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="text-xl text-gray-300 mb-8">
                 Empowering businesses with cutting-edge software solutions and
                 innovative technology.
               </p>
               <div className="flex gap-4 mt-8">
                 <motion.button
-                  className="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg"
+                  className="bg-gradient-to-r from-pink-500 to-blue-400 text-white px-8 py-3 rounded-full font-semibold hover:opacity-90 transition shadow-lg"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => (window.location.href = "/contact-us")}
                 >
                   Get Started
-                </motion.button>
-                <motion.button
-                  className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold border-2 border-blue-600 hover:bg-blue-50 transition"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Learn More
                 </motion.button>
               </div>
             </motion.div>
@@ -63,10 +56,10 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section id="features" className="py-20">
+        <section id="features" className="py-20 bg-gradient-to-b from-blue-950 to-black">
           <div className="container mx-auto px-4">
             <motion.h2
-              className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
+              className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-pink-500 to-blue-400 bg-clip-text text-transparent"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -96,7 +89,7 @@ export default function Home() {
               ].map((feature, index) => (
                 <motion.div
                   key={index}
-                  className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100"
+                  className="bg-blue-900/20 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-blue-800/30 text-white"
                   whileHover={{ y: -5 }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -104,8 +97,8 @@ export default function Home() {
                   transition={{ delay: index * 0.2 }}
                 >
                   <div className="text-4xl mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
+                  <h3 className="text-xl font-bold mb-2 text-blue-300">{feature.title}</h3>
+                  <p className="text-gray-300">{feature.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -113,10 +106,10 @@ export default function Home() {
         </section>
 
         {/* Services Section */}
-        <section id="services" className="py-20 bg-blue-50">
+        <section id="services" className="py-20 bg-black">
           <div className="container mx-auto px-4">
             <motion.h2
-              className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
+              className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-pink-500 to-blue-400 bg-clip-text text-transparent"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -125,29 +118,29 @@ export default function Home() {
             </motion.h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <motion.div
-                className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100"
+                className="bg-blue-900/20 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-blue-800/30 text-white"
                 whileHover={{ y: -5 }}
               >
-                <h3 className="text-xl font-bold mb-4">Custom Software</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold mb-4 text-blue-300">Custom Software</h3>
+                <p className="text-gray-300">
                   Tailored solutions that transform your business operations.
                 </p>
               </motion.div>
               <motion.div
-                className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100"
+                className="bg-blue-900/20 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-blue-800/30 text-white"
                 whileHover={{ y: -5 }}
               >
-                <h3 className="text-xl font-bold mb-4">SaaS Platforms</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold mb-4 text-blue-300">SaaS Platforms</h3>
+                <p className="text-gray-300">
                   Scalable platforms that grow with your business.
                 </p>
               </motion.div>
               <motion.div
-                className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100"
+                className="bg-blue-900/20 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-blue-800/30 text-white"
                 whileHover={{ y: -5 }}
               >
-                <h3 className="text-xl font-bold mb-4">Consulting</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold mb-4 text-blue-300">Consulting</h3>
+                <p className="text-gray-300">
                   Expert guidance for digital transformation.
                 </p>
               </motion.div>

@@ -27,12 +27,19 @@ export default function About() {
     }
   ];
 
+  const stats = [
+    { number: "5+", label: "Years Experience" },
+    { number: "50+", label: "Projects Completed" },
+    { number: "100%", label: "Client Satisfaction" },
+    { number: "24/7", label: "Support" },
+  ];
+
   return (
-    <div className="bg-white min-h-screen">
-      <header className="pt-32 pb-20 bg-gradient-to-b from-blue-50 to-white">
+    <div className="bg-gradient-to-b from-black to-blue-900 min-h-screen">
+      <header className="pt-32 pb-20">
         <div className="container mx-auto px-4 text-center">
           <motion.h1
-            className="text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
+            className="text-6xl font-bold mb-6 bg-gradient-to-r from-pink-500 to-blue-400 bg-clip-text text-transparent"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -40,17 +47,38 @@ export default function About() {
             About lumaCore
           </motion.h1>
           <motion.p
-            className="text-xl text-gray-600 max-w-2xl mx-auto"
+            className="text-xl text-gray-400 max-w-2xl mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
           >
-            Transforming businesses through innovative technology solutions
+            Empowering businesses through innovative technology solutions since 2018
           </motion.p>
         </div>
       </header>
-
+      <div className="bg-gradient-to-b from-blue-1000 to-black">
       <main className="container mx-auto px-4 py-16">
+        {/* Stats Section */}
+        <section className="mb-20">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                className="text-center p-6 bg-[#111111] rounded-xl border border-[#222222] hover:border-[#333333] transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <h3 className="text-4xl font-bold bg-gradient-to-r from-pink-500 to-blue-400 bg-clip-text text-transparent mb-2">
+                  {stat.number}
+                </h3>
+                <p className="text-gray-400">{stat.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
         {/* Mission Section */}
         <section className="mb-20">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -59,10 +87,10 @@ export default function About() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+              <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-pink-500 to-blue-400 bg-clip-text text-transparent">
                 Our Mission
               </h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-400 mb-6">
                 At lumaCore, we're dedicated to empowering businesses with
                 cutting-edge software solutions that drive growth and
                 innovation. Our mission is to transform digital landscapes and
@@ -77,13 +105,13 @@ export default function About() {
                 ].map((item, index) => (
                   <motion.li
                     key={index}
-                    className="flex items-center gap-3 text-gray-700"
+                    className="flex items-center gap-3 text-gray-400"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <span className="text-blue-600">✓</span>
+                    <span className="">✓</span>
                     {item}
                   </motion.li>
                 ))}
@@ -108,7 +136,7 @@ export default function About() {
         {/* Projects Section */}
         <section className="mt-16">
           <motion.h2 
-            className="text-3xl font-bold mb-12 text-center bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
+            className="text-3xl font-bold mb-12 text-center bg-gradient-to-r from-pink-500 to-blue-400 bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -119,7 +147,7 @@ export default function About() {
             {projects.map((project, index) => (
               <motion.div
                 key={index}
-                className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group bg-[#111111] rounded-xl border border-[#222222] hover:border-[#333333] transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -131,7 +159,7 @@ export default function About() {
                   target={project.link !== "#" ? "_blank" : "_self"}
                   rel="noopener noreferrer"
                 >
-                  <div className="relative h-40 mb-6 bg-blue-50 rounded-lg overflow-hidden">
+                  <div className="relative h-40 mb-6 bg-[#0a0a0a] rounded-lg overflow-hidden">
                     <Image
                       src={project.image}
                       alt={project.title}
@@ -140,23 +168,23 @@ export default function About() {
                     />
                   </div>
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-bold text-gray-900">
+                    <h3 className="text-xl font-bold text-white">
                       {project.title}
                     </h3>
                     {project.comingSoon ? (
-                      <span className="text-xs font-semibold px-2 py-1 bg-blue-100 text-blue-600 rounded-full">
+                      <span className="text-xs font-semibold px-2 py-1 bg-[#222222] text-gray-400 rounded-full">
                         Coming Soon
                       </span>
                     ) : (
                       <motion.span 
-                        className="text-blue-600"
+                        className="text-[#5651e5]"
                         whileHover={{ x: 5 }}
                       >
                         →
                       </motion.span>
                     )}
                   </div>
-                  <p className="text-gray-600">
+                  <p className="text-gray-400">
                     {project.description}
                   </p>
                 </Link>
@@ -164,7 +192,7 @@ export default function About() {
             ))}
           </div>
         </section>
-      </main>
+      </main></div>
     </div>
   );
 }

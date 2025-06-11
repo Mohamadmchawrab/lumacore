@@ -29,10 +29,10 @@ export default function FAQ() {
   ];
 
   return (
-    <section id="faq" className="py-20 bg-gradient-to-b from-white to-blue-50">
+    <section id="faq" className="py-20 bg-black">
       <div className="container mx-auto px-4">
         <motion.h2
-          className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
+          className="text-4xl font-bold text-center mb-16 bg-white  bg-clip-text text-transparent"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -47,17 +47,17 @@ export default function FAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-xl shadow-lg overflow-hidden"
+              className="bg-black rounded-xl shadow-lg overflow-hidden"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full p-6 text-left flex justify-between items-center hover:bg-blue-50 transition"
+                className="w-full p-6 text-left flex justify-between items-center hover:bg-white-50 transition"
               >
-                <h3 className="text-xl font-bold text-blue-800">{faq.q}</h3>
+                <h3 className="text-xl font-bold text-white">{faq.q}</h3>
                 <motion.span
                   animate={{ rotate: openIndex === index ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
-                  className="text-blue-600"
+                  className="text-white"
                 >
                   ▼
                 </motion.span>
@@ -84,7 +84,7 @@ export default function FAQ() {
                     }}
                   >
                     <div className="px-6 pb-6 mt-2">
-                      <p className="text-gray-600">{faq.a}</p>
+                      <p className="text-gray-200">{faq.a}</p>
                     </div>
                   </motion.div>
                 )}
