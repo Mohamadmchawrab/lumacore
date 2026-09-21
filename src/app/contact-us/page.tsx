@@ -1,109 +1,120 @@
-'use client';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Navbar from '@/components/Navbar';
+"use client";
+
+import { FormEvent, useState } from "react";
 
 export default function Contact() {
+  const [status, setStatus] = useState("");
+
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const name = String(form.get("name") || "").trim();
+    const email = String(form.get("email") || "").trim();
+    const message = String(form.get("message") || "").trim();
+    const subject = encodeURIComponent(`Luma Core enquiry from ${name || "website"}`);
+    const body = encodeURIComponent(`${message}\n\nFrom: ${name} <${email}>`);
+    window.location.href = `mailto:info@lumacore.com?subject=${subject}&body=${body}`;
+    setStatus("Your email app should open with the message ready to send.");
+  }
+
   return (
-    <div className="bg-black text-gray-300 min-h-screen">
-      <Navbar />
-      <header className="pt-32 pb-20 ">
-        <div className="container mx-auto px-4 text-center">
-          <motion.h1 
-            className="text-6xl font-bold mb-6 bg-gradient-to-r from-pink-500 to-blue-400 bg-clip-text text-transparent"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            Get in Touch
-          </motion.h1>
-          <motion.p 
-            className="text-xl text-gray-300 max-w-2xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-          >
-            Let's discuss how we can help transform your business
-          </motion.p>
-        </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="space-y-8"
-          >
-            <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-pink-500 to-blue-400 bg-clip-text text-transparent">
-              Contact Information
-            </h2>
-            
-            {[
-              { icon: "📍", "title": "Address", "content": "2261 Market Street STE 85170, San Francisco, CA 94114" },
-              { icon: "📧", title: "Email", content: "info@lumacore.com" },
-              { icon: "📞", title: "Phone", content: " (+961) 71480345" }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                className="flex items-start gap-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
+    <main className="mx-auto grid max-w-6xl gap-16 px-5 py-16 lg:grid-cols-[0.9fr_1.1fr]">
+      <div>
+        <p className="text-sm tracking-[0.18em] uppercase text-[#5f5a54]">Contact</p>
+        <h1
+          className="mt-3 text-4xl leading-tight sm:text-5xl"
+        >
+          Tell us what you want built.
+        </h1>
+        <p className="mt-5 max-w-md leading-relaxed text-[#5f5a54]">
+          For JobsBoard partnerships, hiring on the platform, or a custom product
+          engagement — start here.
+        </p>
+        <dl className="mt-10 space-y-6 text-sm">
+          <div>
+            <dt className="text-[#5f5a54]">Email</dt>
+            <dd className="mt-1">
+              <a href="mailto:info@lumacore.com" className="border-b border-[#161513] pb-0.5">
+                info@lumacore.com
+              </a>
+            </dd>
+          </div>
+          <div>
+            <dt className="text-[#5f5a54]">Phone</dt>
+            <dd className="mt-1">
+              <a href="tel:+31620680846" className="border-b border-[#161513] pb-0.5">
+                +31 6 2068 0846
+              </a>
+            </dd>
+          </div>
+          <div>
+            <dt className="text-[#5f5a54]">Office</dt>
+            <dd className="mt-1 leading-relaxed">
+              2261 Market Street STE 85170
+              <br />
+              San Francisco, CA 94114
+            </dd>
+          </div>
+          <div>
+            <dt className="text-[#5f5a54]">Product</dt>
+            <dd className="mt-1">
+              <a
+                href="https://jobsboard.ai"
+                target="_blank"
+                rel="noreferrer"
+                className="border-b border-[#161513] pb-0.5"
               >
-                <div className="w-12 h-12 bg-blue-900/20 backdrop-blur-sm rounded-full flex items-center justify-center text-2xl border border-blue-800/30">
-                  {item.icon}
-                </div>
-                <div>
-                  <h3 className="font-semibold text-blue-300 text-lg">{item.title}</h3>
-                  <p className="text-gray-300">{item.content}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+                jobsboard.ai
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </div>
 
-          <motion.form
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="space-y-6 bg-blue-900/20 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-blue-800/30"
-          >
-            <div>
-              <label className="block text-blue-300 mb-2" htmlFor="name">Name</label>
-              <input
-                type="text"
-                id="name"
-                className="w-full px-4 py-3 rounded-lg bg-blue-900/30 border border-blue-800/30 text-white focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 outline-none transition"
-                placeholder="Your name"
-              />
-            </div>
-            <div>
-              <label className="block text-blue-300 mb-2" htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                className="w-full px-4 py-3 rounded-lg bg-blue-900/30 border border-blue-800/30 text-white focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 outline-none transition"
-                placeholder="your@email.com"
-              />
-            </div>
-            <div>
-              <label className="block text-blue-300 mb-2" htmlFor="message">Message</label>
-              <textarea
-                id="message"
-                rows={6}
-                className="w-full px-4 py-3 rounded-lg bg-blue-900/30 border border-blue-800/30 text-white focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 outline-none transition"
-                placeholder="Your message..."
-              ></textarea>
-            </div>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full bg-gradient-to-r from-pink-500 to-blue-400 text-white py-3 rounded-lg font-semibold hover:opacity-90 transition"
-            >
-              Send Message
-            </motion.button>
-          </motion.form>
+      <form onSubmit={onSubmit} className="space-y-5 border border-[#ddd6cc] bg-white/60 p-6 sm:p-8">
+        <div>
+          <label htmlFor="name" className="block text-sm text-[#5f5a54]">
+            Name
+          </label>
+          <input
+            id="name"
+            name="name"
+            required
+            className="mt-2 w-full border border-[#ddd6cc] bg-white px-3 py-3 outline-none focus:border-[#161513]"
+          />
         </div>
-      </main>
-    </div>
+        <div>
+          <label htmlFor="email" className="block text-sm text-[#5f5a54]">
+            Email
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            className="mt-2 w-full border border-[#ddd6cc] bg-white px-3 py-3 outline-none focus:border-[#161513]"
+          />
+        </div>
+        <div>
+          <label htmlFor="message" className="block text-sm text-[#5f5a54]">
+            Message
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            rows={7}
+            className="mt-2 w-full border border-[#ddd6cc] bg-white px-3 py-3 outline-none focus:border-[#161513]"
+          />
+        </div>
+        <button
+          type="submit"
+          className="bg-[#161513] px-5 py-3 text-sm text-[#f4f1eb]"
+        >
+          Send message
+        </button>
+        {status && <p className="text-sm text-[#5f5a54]">{status}</p>}
+      </form>
+    </main>
   );
 }

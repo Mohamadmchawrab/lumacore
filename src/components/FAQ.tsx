@@ -1,96 +1,58 @@
-'use client';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+"use client";
+
+import { useState } from "react";
+
+const faqs = [
+  {
+    q: "What does Luma Core build?",
+    a: "We build and operate software products. JobsBoard.ai is our public job marketplace. We also take on custom platforms and SaaS work for clients.",
+  },
+  {
+    q: "Is JobsBoard.ai part of Luma Core?",
+    a: "Yes. JobsBoard.ai is a Luma Core product — jobs, companies, and NGO hiring for Lebanon and the region.",
+  },
+  {
+    q: "How long does a typical engagement take?",
+    a: "Most product builds run two to six months. We agree a timeline before work starts, based on scope rather than a generic package.",
+  },
+  {
+    q: "Do you support products after launch?",
+    a: "Yes. Our own products stay in production with us. Client work can include a maintenance arrangement after launch.",
+  },
+  {
+    q: "Where are you based?",
+    a: "Luma Core LLC is registered in San Francisco. Product work for JobsBoard is focused on Lebanon.",
+  },
+];
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const faqs = [
-    {
-      q: "What services does lumaCore offer?",
-      a: "We provide custom software development, SaaS platform creation, digital transformation consulting, and enterprise solutions tailored to your business needs."
-    },
-    {
-      q: "How long does a typical project take?",
-      a: "Project timelines vary based on complexity and scope. Most projects range from 2-6 months, but we'll provide a detailed timeline during our initial consultation."
-    },
-    {
-      q: "Do you provide ongoing support?",
-      a: "Yes, we offer comprehensive support and maintenance packages to ensure your solutions continue to perform optimally after launch."
-    },
-    {
-      q: "What technologies do you work with?",
-      a: "We specialize in modern web technologies including React, Node.js, Python, and cloud platforms like AWS and Azure. Our stack is always optimized for your specific needs."
-    },
-    {
-      q: "How do you ensure project success?",
-      a: "We follow an agile methodology with regular client communication, iterative development, and comprehensive testing to ensure project success."
-    }
-  ];
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-20 bg-black">
-      <div className="container mx-auto px-4">
-        <motion.h2
-          className="text-4xl font-bold text-center mb-16 bg-white  bg-clip-text text-transparent"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          Frequently Asked Questions
-        </motion.h2>
-        <div className="max-w-3xl mx-auto space-y-4">
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-black rounded-xl shadow-lg overflow-hidden"
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full p-6 text-left flex justify-between items-center hover:bg-white-50 transition"
-              >
-                <h3 className="text-xl font-bold text-white">{faq.q}</h3>
-                <motion.span
-                  animate={{ rotate: openIndex === index ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="text-white"
+    <section id="faq" className="border-t border-[#ddd6cc] bg-white/40">
+      <div className="mx-auto max-w-3xl px-5 py-20">
+        <h2 className="text-3xl">
+          Questions
+        </h2>
+        <div className="mt-10 divide-y divide-[#ddd6cc] border-y border-[#ddd6cc]">
+          {faqs.map((faq, index) => {
+            const open = openIndex === index;
+            return (
+              <div key={faq.q}>
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(open ? null : index)}
+                  className="flex w-full items-baseline justify-between gap-6 py-5 text-left"
                 >
-                  ▼
-                </motion.span>
-              </button>
-              <AnimatePresence>
-                {openIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ 
-                      height: "auto", 
-                      opacity: 1,
-                      transition: {
-                        height: { duration: 0.3 },
-                        opacity: { duration: 0.3, delay: 0.1 }
-                      }
-                    }}
-                    exit={{ 
-                      height: 0, 
-                      opacity: 0,
-                      transition: {
-                        height: { duration: 0.3 },
-                        opacity: { duration: 0.2 }
-                      }
-                    }}
-                  >
-                    <div className="px-6 pb-6 mt-2">
-                      <p className="text-gray-200">{faq.a}</p>
-                    </div>
-                  </motion.div>
+                  <span className="text-lg">{faq.q}</span>
+                  <span className="text-sm text-[#5f5a54]">{open ? "Hide" : "Show"}</span>
+                </button>
+                {open && (
+                  <p className="pb-5 leading-relaxed text-[#5f5a54]">{faq.a}</p>
                 )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

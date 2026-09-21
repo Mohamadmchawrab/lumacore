@@ -1,65 +1,84 @@
-import { footer } from "framer-motion/client";
 import Link from "next/link";
-import React from "react";
-import Image from "next/image";
-import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
 
-const Footer = () => {
+const columns = [
+  {
+    title: "Products",
+    links: [
+      { href: "https://jobsboard.ai", label: "JobsBoard.ai", external: true },
+      { href: "https://imageniai.com", label: "Imageni AI", external: true },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { href: "/about-us", label: "About", external: false },
+      { href: "/contact-us", label: "Contact", external: false },
+    ],
+  },
+  {
+    title: "Services",
+    links: [
+      { href: "/#services", label: "Custom software", external: false },
+      { href: "/#services", label: "SaaS platforms", external: false },
+      { href: "/#services", label: "Advisory", external: false },
+    ],
+  },
+];
+
+export default function Footer() {
   return (
-    <footer className="bg-black text-white py-12">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="border-t border-[#ddd6cc] bg-[#161513] text-[#f4f1eb]">
+      <div className="mx-auto max-w-6xl px-5 py-16">
+        <div className="grid gap-10 md:grid-cols-4">
           <div>
-          <Link href="/" className="flex items-center">
-          <Image 
-            src="/logo-rm.png" 
-            alt="LumaCore Logo" 
-            width={100} 
-            height={65}
-            className="rounded-xl shadow-lg bg-black"
-            priority
-          />
-        </Link>
-            <p className="text-gray-400 mt-4">
-              Building the future of digital solutions.
+            <p
+              className="text-2xl italic"
+              style={{ fontFamily: "var(--font-fraunces)" }}
+            >
+              Luma Core
             </p>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-[#cfc8bd]">
+              A software studio in San Francisco. We build products including
+              JobsBoard.ai.
+            </p>
+            <a
+              href="mailto:info@lumacore.com"
+              className="mt-6 inline-block text-sm underline decoration-[#cfc8bd] underline-offset-4 hover:text-white"
+            >
+              info@lumacore.com
+            </a>
           </div>
-          <div>
-            <h4 className="font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><Link href="/" className="hover:text-white transition-colors">Custom Software</Link></li>
-              <li><Link href="/" className="hover:text-white transition-colors">SaaS Platforms</Link></li>
-              <li><Link href="/" className="hover:text-white transition-colors">Consulting</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-4">Company</h4>
-            <ul className="space-y-2 text-gray-400 flex flex-col">
-              <Link href="/about-us" className="hover:text-white transition-colors">About Us</Link>
-              <Link href="/contact-us" className="hover:text-white transition-colors">Contact</Link>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-4">Connect</h4>
-            <div className="flex gap-4">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                <FaLinkedin size={24} />
-              </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                <FaGithub size={24} />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                <FaTwitter size={24} />
-              </a>
+          {columns.map((column) => (
+            <div key={column.title}>
+              <h2 className="text-sm font-semibold tracking-wide">{column.title}</h2>
+              <ul className="mt-4 space-y-3 text-sm text-[#cfc8bd]">
+                {column.links.map((link) => (
+                  <li key={link.label}>
+                    {link.external || link.href.includes("#") ? (
+                      <a
+                        href={link.href}
+                        target={link.external ? "_blank" : undefined}
+                        rel={link.external ? "noreferrer" : undefined}
+                        className="hover:text-white"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link href={link.href} className="hover:text-white">
+                        {link.label}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
+          ))}
         </div>
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; {new Date().getFullYear()} LumaCore. All rights reserved.</p>
+        <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-[#9d978d] sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Luma Core LLC. All rights reserved.</p>
+          <p>2261 Market Street STE 85170, San Francisco, CA 94114</p>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

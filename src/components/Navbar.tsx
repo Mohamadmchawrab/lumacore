@@ -1,46 +1,98 @@
-'use client';
-import { Space_Grotesk, Outfit } from 'next/font/google';
-import Image from 'next/image';
-import Link from 'next/link';
+"use client";
 
-// Move font declarations outside component
-export const spaceGrotesk = Space_Grotesk({ 
-  subsets: ['latin'],
-  weight: ['700'],
-  display: 'swap', // Add display swap for better loading
-  variable: '--font-space-grotesk', // Add variable for CSS
-});
+import Link from "next/link";
+import { useState } from "react";
 
-export const outfit = Outfit({ 
-  subsets: ['latin'],
-  weight: ['400', '600'],
-  display: 'swap',
-  variable: '--font-outfit',
-});
+function NavItem({
+  href,
+  label,
+  external,
+  onClick,
+}: {
+  href: string
+  label: string
+  external?: boolean
+  onClick?: () => void
+}) {
+  const className = "transition-colors hover:text-[#161513]"
+  if (external || href.includes("#")) {
+    return (
+      <a
+        href={href}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noreferrer" : undefined}
+        className={className}
+        onClick={onClick}
+      >
+        {label}
+      </a>
+    )
+  }
+  return (
+    <Link href={href} className={className} onClick={onClick}>
+      {label}
+    </Link>
+  )
+}
+
+const links = [
+  { href: "/#work", label: "Work" },
+  { href: "/#services", label: "Services" },
+  { href: "/about-us", label: "About" },
+  { href: "https://jobsboard.ai", label: "JobsBoard.ai", external: true },
+];
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <header className={`fixed w-full bg-black/95 backdrop-blur-sm border-b border-white/10 z-50 ${outfit.variable} ${spaceGrotesk.variable}`}>
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center">
-          <Image 
-            src="/logo-rm.png" 
-            alt="LumaCore Logo" 
-            width={100} 
-            height={65}
-            className="rounded-xl shadow-lg bg-black"
-            priority
-          />
+    <header className="sticky top-0 z-50 border-b border-[#ddd6cc] bg-[#f4f1eb]/92 backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+        <Link
+          href="/"
+          className="font-display text-xl italic tracking-tight"
+          style={{ fontFamily: "var(--font-fraunces)" }}
+        >
+          Luma Core
         </Link>
-        <nav className="hidden md:flex items-center gap-8 font-outfit">
-          <Link href="/#features" className="text-white/70 hover:text-white transition-colors font-semibold">Features</Link>
-          <Link href="/#services" className="text-white/70 hover:text-white transition-colors font-semibold">Services</Link>
-          <Link href="/#faq" className="text-white/70 hover:text-white transition-colors font-semibold">FAQ</Link>
-          <Link href="/contact-us" className="bg-gradient-to-r from-white/10 to-white/5 hover:from-white/20 hover:to-white/10 text-white px-6 py-2 rounded-full transition-all font-semibold border border-white/20">
-            Contact Us
+        <nav className="hidden items-center gap-8 text-sm text-[#5f5a54] md:flex">
+          {links.map((link) => (
+            <NavItem key={link.href} href={link.href} label={link.label} external={link.external} />
+          ))}
+          <Link
+            href="/contact-us"
+            className="border border-[#161513] px-4 py-2 text-[#161513] transition-colors hover:bg-[#161513] hover:text-[#f4f1eb]"
+          >
+            Contact
           </Link>
         </nav>
+        <button
+          type="button"
+          className="text-sm tracking-wide md:hidden"
+          onClick={() => setOpen((value) => !value)}
+          aria-expanded={open}
+        >
+          {open ? "Close" : "Menu"}
+        </button>
       </div>
+      {open && (
+        <nav className="border-t border-[#ddd6cc] px-5 py-4 md:hidden">
+          <div className="flex flex-col gap-4 text-sm">
+            {links.map((link) => (
+              <NavItem
+                key={link.href}
+                href={link.href}
+                label={link.label}
+                external={link.external}
+                onClick={() => setOpen(false)}
+              />
+            ))}
+            <Link href="/contact-us" onClick={() => setOpen(false)}>
+              Contact
+            </Link>
+          </div>
+        </nav>
+      )}
     </header>
   );
 }

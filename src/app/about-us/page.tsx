@@ -1,198 +1,127 @@
-"use client";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About — Luma Core",
+  description:
+    "Luma Core LLC is a San Francisco software studio. We build JobsBoard.ai and custom products for operators who need software that holds up.",
+};
 
 export default function About() {
-  const projects = [
-    {
-      title: "Imageni AI",
-      description: "A cutting-edge AI platform for generating high-quality images.",
-      link: "https://imageniai.com",
-      image: "/feature-image.png"
-    },
-    {
-      title: "SmartInvoice",
-      description: "A full Invoice management system with AI capabilities.",
-      link: "#",
-      image: "/projects/sync.svg",
-      comingSoon: true
-    },
-    {
-      title: "CloudFlow",
-      description: "Cloud-native workflow automation solution.",
-      link: "#",
-      image: "/projects/cloud.svg",
-      comingSoon: true
-    }
-  ];
-
-  const stats = [
-    { number: "5+", label: "Years Experience" },
-    { number: "50+", label: "Projects Completed" },
-    { number: "100%", label: "Client Satisfaction" },
-    { number: "24/7", label: "Support" },
-  ];
-
   return (
-    <div className="bg-gradient-to-b from-black to-blue-900 min-h-screen">
-      <header className="pt-32 pb-20">
-        <div className="container mx-auto px-4 text-center">
-          <motion.h1
-            className="text-6xl font-bold mb-6 bg-gradient-to-r from-pink-500 to-blue-400 bg-clip-text text-transparent"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            About lumaCore
-          </motion.h1>
-          <motion.p
-            className="text-xl text-gray-400 max-w-2xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-          >
-            Empowering businesses through innovative technology solutions since 2018
-          </motion.p>
+    <main>
+      <section className="mx-auto max-w-6xl px-5 pb-8 pt-16">
+        <p className="text-sm tracking-[0.18em] uppercase text-[#5f5a54]">About</p>
+        <h1
+          className="mt-3 max-w-3xl text-4xl leading-tight sm:text-5xl"
+        >
+          We build software the way a product company should: quietly, and for the long term.
+        </h1>
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#5f5a54]">
+          Luma Core LLC is a software studio. JobsBoard.ai is the public face of that
+          work — a job marketplace used by people and organisations in Lebanon.
+        </p>
+      </section>
+
+      <section className="relative h-[52vh] min-h-[320px]">
+        <Image
+          src="/images/city.jpg"
+          alt="City street"
+          fill
+          className="object-cover"
+          priority
+        />
+      </section>
+
+      <section className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-2">
+        <div>
+          <h2 className="text-2xl">
+            The studio
+          </h2>
+          <p className="mt-4 leading-relaxed text-[#5f5a54]">
+            We started Luma Core to ship products we would use ourselves. That
+            means fewer decks, fewer placeholder features, and more time on the
+            parts that have to work: search, hiring flows, company pages, and
+            the operations behind them.
+          </p>
+          <p className="mt-4 leading-relaxed text-[#5f5a54]">
+            The company is registered in San Francisco. Day-to-day product work
+            is centred on JobsBoard and client platforms.
+          </p>
         </div>
-      </header>
-      <div className="bg-gradient-to-b from-blue-1000 to-black">
-      <main className="container mx-auto px-4 py-16">
-        {/* Stats Section */}
-        <section className="mb-20">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                className="text-center p-6 bg-[#111111] rounded-xl border border-[#222222] hover:border-[#333333] transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <h3 className="text-4xl font-bold bg-gradient-to-r from-pink-500 to-blue-400 bg-clip-text text-transparent mb-2">
-                  {stat.number}
-                </h3>
-                <p className="text-gray-400">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+        <div className="relative min-h-[280px] overflow-hidden bg-[#ddd6cc]">
+          <Image src="/images/office.jpg" alt="Studio interior" fill className="object-cover" />
+        </div>
+      </section>
 
-        {/* Mission Section */}
-        <section className="mb-20">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-pink-500 to-blue-400 bg-clip-text text-transparent">
-                Our Mission
-              </h2>
-              <p className="text-gray-400 mb-6">
-                At lumaCore, we're dedicated to empowering businesses with
-                cutting-edge software solutions that drive growth and
-                innovation. Our mission is to transform digital landscapes and
-                create lasting impact through technology.
+      <section className="border-y border-[#ddd6cc] bg-white/50">
+        <div className="mx-auto max-w-6xl px-5 py-20">
+          <h2 className="text-2xl">
+            Products
+          </h2>
+          <div className="mt-10 grid gap-10 md:grid-cols-2">
+            <article>
+              <div className="relative aspect-[16/10] overflow-hidden border border-[#ddd6cc] bg-[#ddd6cc]">
+                <Image
+                  src="/images/jobsboard.jpg"
+                  alt="JobsBoard.ai homepage"
+                  fill
+                  className="object-cover object-top"
+                />
+              </div>
+              <h3 className="mt-5 text-xl">JobsBoard.ai</h3>
+              <p className="mt-2 text-[#5f5a54]">
+                Jobs, companies, and NGO profiles. Employers post roles. Seekers apply.
+                Organisations keep hiring on their own page.
               </p>
-              <ul className="space-y-4">
-                {[
-                  "Building scalable solutions",
-                  "Driving digital transformation",
-                  "Creating innovative experiences",
-                  "Delivering measurable results",
-                ].map((item, index) => (
-                  <motion.li
-                    key={index}
-                    className="flex items-center gap-3 text-gray-400"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <span className="">✓</span>
-                    {item}
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-            <motion.div
-              className="relative h-[400px]"
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <Image
-                src="/about-us.png"
-                alt="Our Mission"
-                fill
-                className="object-contain"
-              />
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Projects Section */}
-        <section className="mt-16">
-          <motion.h2 
-            className="text-3xl font-bold mb-12 text-center bg-gradient-to-r from-pink-500 to-blue-400 bg-clip-text text-transparent"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            Our Projects
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                className="group bg-[#111111] rounded-xl border border-[#222222] hover:border-[#333333] transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+              <Link
+                href="https://jobsboard.ai"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 inline-block border-b border-[#161513] pb-1 text-sm"
               >
-                <Link 
-                  href={project.link}
-                  className="block p-6 h-full"
-                  target={project.link !== "#" ? "_blank" : "_self"}
-                  rel="noopener noreferrer"
-                >
-                  <div className="relative h-40 mb-6 bg-[#0a0a0a] rounded-lg overflow-hidden">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-bold text-white">
-                      {project.title}
-                    </h3>
-                    {project.comingSoon ? (
-                      <span className="text-xs font-semibold px-2 py-1 bg-[#222222] text-gray-400 rounded-full">
-                        Coming Soon
-                      </span>
-                    ) : (
-                      <motion.span 
-                        className="text-[#5651e5]"
-                        whileHover={{ x: 5 }}
-                      >
-                        →
-                      </motion.span>
-                    )}
-                  </div>
-                  <p className="text-gray-400">
-                    {project.description}
-                  </p>
-                </Link>
-              </motion.div>
-            ))}
+                Open JobsBoard.ai
+              </Link>
+            </article>
+            <article>
+              <div className="relative aspect-[16/10] overflow-hidden border border-[#ddd6cc] bg-[#ddd6cc]">
+                <Image
+                  src="/images/product.jpg"
+                  alt="Working on a laptop"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <h3 className="mt-5 text-xl">Imageni AI</h3>
+              <p className="mt-2 text-[#5f5a54]">
+                An AI studio for generating images, with a personal library of everything you create.
+              </p>
+              <Link
+                href="https://imageniai.com"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 inline-block border-b border-[#161513] pb-1 text-sm"
+              >
+                Open Imageni AI
+              </Link>
+            </article>
           </div>
-        </section>
-      </main></div>
-    </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 py-20">
+        <p className="max-w-2xl text-lg leading-relaxed text-[#5f5a54]">
+          If you want a product built to the same standard — or you hire through
+          JobsBoard — write to us.
+        </p>
+        <Link
+          href="/contact-us"
+          className="mt-6 inline-block bg-[#161513] px-5 py-3 text-sm text-[#f4f1eb]"
+        >
+          Contact Luma Core
+        </Link>
+      </section>
+    </main>
   );
 }
