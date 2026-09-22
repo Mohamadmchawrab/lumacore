@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: "Where are you based?",
-    a: "Luma Core LLC is registered in San Francisco. Product work for JobsBoard is focused on Lebanon.",
+    a: "Luma Core LLC is registered in San Francisco.",
   },
 ];
 

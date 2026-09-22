@@ -40,14 +40,6 @@ export default function Contact() {
             </dd>
           </div>
           <div>
-            <dt className="text-[#5f5a54]">Phone</dt>
-            <dd className="mt-1">
-              <a href="tel:+31620680846" className="border-b border-[#161513] pb-0.5">
-                +31 6 2068 0846
-              </a>
-            </dd>
-          </div>
-          <div>
             <dt className="text-[#5f5a54]">Office</dt>
             <dd className="mt-1 leading-relaxed">
               2261 Market Street STE 85170
