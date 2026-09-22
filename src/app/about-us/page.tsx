@@ -65,7 +65,7 @@ export default function About() {
               <div className="relative aspect-[16/10] overflow-hidden border border-[#ddd6cc] bg-[#ddd6cc]">
                 <Image
                   src="/images/jobsboard.jpg"
-                  alt="JobsBoard.ai homepage"
+                  alt="JobsBoard.ai Netherlands homepage"
                   fill
                   className="object-cover object-top"
                 />
@@ -76,34 +76,12 @@ export default function About() {
                 Organisations keep hiring on their own page.
               </p>
               <Link
-                href="https://jobsboard.ai"
+                href="https://jobsboard.ai/nl"
                 target="_blank"
                 rel="noreferrer"
                 className="mt-4 inline-block border-b border-[#161513] pb-1 text-sm"
               >
                 Open JobsBoard.ai
-              </Link>
-            </article>
-            <article>
-              <div className="relative aspect-[16/10] overflow-hidden border border-[#ddd6cc] bg-[#ddd6cc]">
-                <Image
-                  src="/images/product.jpg"
-                  alt="Working on a laptop"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="mt-5 text-xl">Imageni AI</h3>
-              <p className="mt-2 text-[#5f5a54]">
-                An AI studio for generating images, with a personal library of everything you create.
-              </p>
-              <Link
-                href="https://imageniai.com"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-4 inline-block border-b border-[#161513] pb-1 text-sm"
-              >
-                Open Imageni AI
               </Link>
             </article>
           </div>

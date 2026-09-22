@@ -5,7 +5,6 @@ const columns = [
     title: "Products",
     links: [
       { href: "https://jobsboard.ai", label: "JobsBoard.ai", external: true },
-      { href: "https://imageniai.com", label: "Imageni AI", external: true },
     ],
   },
   {

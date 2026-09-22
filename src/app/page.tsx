@@ -72,7 +72,7 @@ export default function Home() {
           <div className="relative aspect-[16/10] overflow-hidden border border-[#ddd6cc] bg-[#ddd6cc]">
             <Image
               src="/images/jobsboard.jpg"
-              alt="JobsBoard.ai homepage"
+              alt="JobsBoard.ai Netherlands homepage"
               fill
               className="object-cover object-top"
             />
@@ -88,42 +88,17 @@ export default function Home() {
               list jobs that belong on their page.
             </p>
             <Link
-              href="https://jobsboard.ai"
+              href="https://jobsboard.ai/nl"
               target="_blank"
               rel="noreferrer"
               className="mt-6 inline-block border-b border-[#161513] pb-1 text-sm font-medium"
             >
-              jobsboard.ai
+              jobsboard.ai/nl
             </Link>
           </div>
         </article>
 
         <div className="mt-16 grid gap-8 md:grid-cols-2">
-          <article>
-            <div className="relative aspect-[16/10] overflow-hidden border border-[#ddd6cc] bg-[#ddd6cc]">
-              <Image
-                src="/images/product.jpg"
-                alt="Working on a laptop"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <h3 className="mt-5 text-xl">
-              Imageni AI
-            </h3>
-            <p className="mt-2 text-[#5f5a54]">
-              An AI studio for generating images — prompt to image, a personal
-              library, and custom models. Live at imageniai.com.
-            </p>
-            <Link
-              href="https://imageniai.com"
-              target="_blank"
-              rel="noreferrer"
-              className="mt-4 inline-block border-b border-[#161513] pb-1 text-sm"
-            >
-              imageniai.com
-            </Link>
-          </article>
           <article>
             <div className="relative aspect-[16/10] overflow-hidden bg-[#ddd6cc]">
               <Image
