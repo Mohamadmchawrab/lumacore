@@ -65,7 +65,7 @@ export default function About() {
               <div className="relative aspect-[16/10] overflow-hidden border border-[#ddd6cc] bg-[#ddd6cc]">
                 <Image
                   src="/images/jobsboard.jpg"
-                  alt="JobsBoard.ai Netherlands homepage"
+                  alt="JobsBoard.ai Sweden homepage"
                   fill
                   className="object-cover object-top"
                 />
@@ -76,7 +76,7 @@ export default function About() {
                 Organisations keep hiring on their own page.
               </p>
               <Link
-                href="https://jobsboard.ai/nl"
+                href="https://jobsboard.ai/se"
                 target="_blank"
                 rel="noreferrer"
                 className="mt-4 inline-block border-b border-[#161513] pb-1 text-sm"
